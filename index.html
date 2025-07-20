@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بحث عن الأدوية - نظام الصيدليات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-search"></i> البحث عن دواء في الصيدليات</h1>
+        </header>
+        
+        <div class="client-login-section">
+            <h2 class="section-title"><i class="fas fa-user"></i> تسجيل العميل</h2>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="client-name">الاسم الكامل:</label>
+                    <input type="text" id="client-name" placeholder="ادخل اسمك الكامل">
+                </div>
+                
+                <div class="form-group">
+                    <label for="client-phone">رقم الهاتف:</label>
+                    <input type="tel" id="client-phone" placeholder="ادخل رقم هاتفك">
+                </div>
+                
+                <button class="btn btn-primary" id="client-login-btn">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+            </div>
+        </div>
+        
+        <div class="client-search-section" style="display: none;">
+            <div class="search-box">
+                <input type="text" id="drug-search" placeholder="ابحث عن دواء...">
+                <button class="search-btn" id="search-btn">بحث</button>
+            </div>
+            
+            <div class="results-container">
+                <h3 class="section-title"><i class="fas fa-map-marker-alt"></i> الصيدليات المتاحة</h3>
+                <div id="pharmacies-list">
+                    <div class="no-results">
+                        <i class="fas fa-info-circle"></i> ابحث عن دواء لمعرفة الصيدليات المتوفرة بها
+                    </div>
+                </div>
+            </div>
+            
+            <div class="client-info">
+                <p>مرحباً، <span id="display-client-name"></span></p>
+                <button class="btn btn-outline" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>نظام البحث عن الأدوية - جميع الحقوق محفوظة &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>
