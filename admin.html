@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الصيدليات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-clinic-medical"></i> لوحة تحكم إدارة الصيدلية</h1>
+        </header>
+        
+        <div class="admin-login-section">
+            <h2 class="section-title"><i class="fas fa-user-shield"></i> تسجيل دخول الإدارة</h2>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="pharmacy-name">اسم الصيدلية:</label>
+                    <input type="text" id="pharmacy-name" placeholder="ادخل اسم الصيدلية">
+                </div>
+                
+                <div class="form-group">
+                    <label for="pharmacy-city">المدينة:</label>
+                    <input type="text" id="pharmacy-city" placeholder="ادخل المدينة">
+                </div>
+                
+                <div class="form-group">
+                    <label for="pharmacy-location">الموقع (الوكيشن):</label>
+                    <input type="text" id="pharmacy-location" placeholder="ادخل العنوان التفصيلي">
+                </div>
+                
+                <div class="form-group">
+                    <label for="admin-password">كلمة المرور:</label>
+                    <input type="password" id="admin-password" placeholder="ادخل كلمة المرور">
+                </div>
+                
+                <button class="btn btn-primary" id="admin-login-btn">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </button>
+            </div>
+        </div>
+        
+        <div class="admin-dashboard" style="display: none;">
+            <div class="pharmacy-info-card">
+                <h2><i class="fas fa-pharmacy"></i> <span id="display-pharmacy-name"></span></h2>
+                <p><i class="fas fa-city"></i> <span id="display-pharmacy-city"></span></p>
+                <p><i class="fas fa-map-marker-alt"></i> <span id="display-pharmacy-location"></span></p>
+                
+                <div class="pharmacy-status">
+                    <div class="status-indicator" id="status-indicator"></div>
+                    <div>
+                        <p>الحالة: <strong id="status-text">جاري التحميل...</strong></p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-outline" id="toggle-status-btn">
+                    <i class="fas fa-lock"></i> تغيير حالة الصيدلية
+                </button>
+            </div>
+            
+            <div class="drugs-management">
+                <h2 class="section-title"><i class="fas fa-pills"></i> إدارة الأدوية المتاحة</h2>
+                
+                <div class="add-drug-form">
+                    <input type="text" id="new-drug" placeholder="اسم الدواء الجديد">
+                    <button class="btn btn-primary" id="add-drug-btn">
+                        <i class="fas fa-plus"></i> إضافة
+                    </button>
+                </div>
+                
+                <div class="drugs-list" id="drugs-list">
+                    <div class="no-drugs">جارٍ تحميل الأدوية...</div>
+                </div>
+            </div>
+            
+            <div class="orders-section">
+                <h2 class="section-title"><i class="fas fa-clipboard-list"></i> طلبات الأدوية الحالية</h2>
+                
+                <div class="orders-list" id="orders-list">
+                    <div class="no-orders">
+                        <i class="fas fa-info-circle"></i> جارٍ تحميل الطلبات...
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary save-data-btn" id="save-data-btn">
+                <i class="fas fa-save"></i> حفظ البيانات
+            </button>
+            
+            <button class="btn btn-outline" id="admin-logout-btn">
+                <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+            </button>
+        </div>
+        
+        <footer>
+            <p>نظام إدارة الصيدليات - جميع الحقوق محفوظة &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
